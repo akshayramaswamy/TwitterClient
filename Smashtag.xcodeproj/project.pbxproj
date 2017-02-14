@@ -12,6 +12,8 @@
 		AF51FCEF1E5259A2003AB3EC /* MentionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51FCEE1E5259A2003AB3EC /* MentionsTableViewController.swift */; };
 		AF51FCF11E52BA51003AB3EC /* ImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF51FCF01E52BA51003AB3EC /* ImageTableViewCell.swift */; };
 		AFC8F43F1E52E47600402046 /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8F43E1E52E47600402046 /* ImageViewController.swift */; };
+		AFC8F4411E53048600402046 /* HistoryTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8F4401E53048600402046 /* HistoryTableTableViewController.swift */; };
+		AFC8F4431E5305AE00402046 /* GlobalTruth.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFC8F4421E5305AE00402046 /* GlobalTruth.swift */; };
 		EC7D5EBF1E4BF94B009A2E85 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EC7D5EBE1E4BF94B009A2E85 /* AppDelegate.swift */; };
 		EC7D5EC41E4BF94B009A2E85 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EC7D5EC21E4BF94B009A2E85 /* Main.storyboard */; };
 		EC7D5EC61E4BF94B009A2E85 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EC7D5EC51E4BF94B009A2E85 /* Assets.xcassets */; };
@@ -39,6 +41,8 @@
 		AF51FCEE1E5259A2003AB3EC /* MentionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MentionsTableViewController.swift; sourceTree = "<group>"; };
 		AF51FCF01E52BA51003AB3EC /* ImageTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageTableViewCell.swift; sourceTree = "<group>"; };
 		AFC8F43E1E52E47600402046 /* ImageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		AFC8F4401E53048600402046 /* HistoryTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableTableViewController.swift; sourceTree = "<group>"; };
+		AFC8F4421E5305AE00402046 /* GlobalTruth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalTruth.swift; sourceTree = "<group>"; };
 		EC7D5EBB1E4BF94B009A2E85 /* Smashtag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Smashtag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC7D5EBE1E4BF94B009A2E85 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EC7D5EC31E4BF94B009A2E85 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -83,10 +87,12 @@
 			children = (
 				EC7D5ED11E4BF992009A2E85 /* TweetTableViewController.swift */,
 				EC7D5EC21E4BF94B009A2E85 /* Main.storyboard */,
+				AFC8F4421E5305AE00402046 /* GlobalTruth.swift */,
 				AF51FCEE1E5259A2003AB3EC /* MentionsTableViewController.swift */,
 				EC7D5ED71E4C0239009A2E85 /* TweetTableViewCell.swift */,
 				AF51FCF01E52BA51003AB3EC /* ImageTableViewCell.swift */,
 				AFC8F43E1E52E47600402046 /* ImageViewController.swift */,
+				AFC8F4401E53048600402046 /* HistoryTableTableViewController.swift */,
 				EC7D5ECA1E4BF94B009A2E85 /* Info.plist */,
 				EC7D5ED01E4BF956009A2E85 /* Supporting Files */,
 			);
@@ -179,7 +185,9 @@
 			files = (
 				AF51FCEF1E5259A2003AB3EC /* MentionsTableViewController.swift in Sources */,
 				EC7D5EBF1E4BF94B009A2E85 /* AppDelegate.swift in Sources */,
+				AFC8F4411E53048600402046 /* HistoryTableTableViewController.swift in Sources */,
 				AF51FCF11E52BA51003AB3EC /* ImageTableViewCell.swift in Sources */,
+				AFC8F4431E5305AE00402046 /* GlobalTruth.swift in Sources */,
 				EC7D5ED21E4BF992009A2E85 /* TweetTableViewController.swift in Sources */,
 				AFC8F43F1E52E47600402046 /* ImageViewController.swift in Sources */,
 				EC7D5ED81E4C0239009A2E85 /* TweetTableViewCell.swift in Sources */,

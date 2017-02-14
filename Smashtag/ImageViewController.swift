@@ -27,15 +27,15 @@ class ImageViewController: UIViewController
     // it initially put it as a subview of our scrollView!
     // we used the Document Outline to drag it out to be a sibling of scrollView
     // instead of a subview
-    //@IBOutlet weak var spinner: UIActivityIndicatorView!
     
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     private func fetchImage() {
         if let url = imageURL {
             // we're going to start something on another queue soon
             // so let's start a spinner going in the UI to let the user know
             // we'll stop this any time an image actually gets set
             // (we'd never want the spinner and an image appearing at the same time!)
-            //spinner.startAnimating()
+            spinner.startAnimating()
             // try? Data(contentsOf:) blocks the thread it is on
             // we are currently on the main thread
             // so we must dispatch that call off to a background queue
@@ -73,7 +73,7 @@ class ImageViewController: UIViewController
             scrollView.delegate = self
             // and we must set our minimum and maximum zoom scale
             scrollView.minimumZoomScale = 0.03
-            scrollView.maximumZoomScale = 1.0
+            scrollView.maximumZoomScale = 10.0
             // most important thing to set in UIScrollView is contentSize
             scrollView.contentSize = imageView.frame.size
             scrollView.addSubview(imageView)
@@ -94,14 +94,48 @@ class ImageViewController: UIViewController
             // so use optional chaining to do nothing
             // if our scrollView outlet has not yet been set
             scrollView?.contentSize = imageView.frame.size
+            scrolledOrZoomed = false
+            autoZoom()
             // now that we've set an image
             // stop any spinner that exists from spinning
-            //spinner?.stopAnimating()
+            spinner?.stopAnimating()
         }
     }
     
+     private var scrolledOrZoomed = false
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        scrolledOrZoomed = true
+    }
     
+    func scrollViewDidZoom(scrollView: UIScrollView) {
+        scrolledOrZoomed = true
+    }
     
+    //used when the user first clicks on image
+    private func autoZoom() {
+        if scrolledOrZoomed {
+            return
+        }
+        if let currentView = scrollView {
+            if image != nil {
+                let boundsHeight = currentView.bounds.size.height/image!.size.height
+                let boundsWidth = currentView.bounds.size.width / image!.size.width
+
+                currentView.zoomScale = max(boundsHeight, boundsWidth)
+                
+                let xPoint = (imageView.frame.size.width - currentView.frame.size.width)
+                let yPoint = (imageView.frame.size.height - currentView.frame.size.height)
+                
+                currentView.contentOffset = CGPoint(x: xPoint/2, y: yPoint / 2)
+                scrolledOrZoomed = false
+            }
+        }
+
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        autoZoom()
+    }
 }
 
 // MARK: UIScrollViewDelegate
@@ -114,4 +148,8 @@ extension ImageViewController : UIScrollViewDelegate
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
+    
+    
+
+    
 }

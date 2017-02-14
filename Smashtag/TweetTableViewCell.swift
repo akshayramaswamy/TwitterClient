@@ -16,7 +16,7 @@ class TweetTableViewCell: UITableViewCell
     @IBOutlet weak var tweetCreatedLabel: UILabel!
     @IBOutlet weak var tweetUserLabel: UILabel!
     @IBOutlet weak var tweetTextLabel: UILabel!
-
+    
     // public API of this UITableViewCell subclass
     // each row in the table has its own instance of this class
     // and each instance will have its own tweet to show
@@ -27,6 +27,7 @@ class TweetTableViewCell: UITableViewCell
     // we just update our outlets using this method
     private func updateUI() {
         
+        //sets colors of hashtags, urls, tweets
         let attributedText = NSMutableAttributedString(string: (tweet?.text)!)
         
         for hashtag in (tweet?.hashtags)!{
@@ -40,18 +41,18 @@ class TweetTableViewCell: UITableViewCell
         for mention in (tweet?.userMentions)!{
             attributedText.setAttributes([NSForegroundColorAttributeName: UIColor.orange], range: mention.nsrange)
         }
-        //changeKeywordsColor(tweet.hashtags, color: UIColor.blueColor())
-        //attributedText.changeKeywordsColor(tweet.urls, color: urlColor)
-        //attributedText.changeKeywordsColor(tweet.Mentions, color: userMentionsColor)
         tweetTextLabel?.text = tweet?.text
         tweetTextLabel.attributedText = attributedText
         tweetUserLabel?.text = tweet?.user.description
         
-        
+        //sets profile image off main thread
         if let profileImageURL = tweet?.user.profileImageURL {
-            // FIXME: blocks main thread
-            if let imageData = try? Data(contentsOf: profileImageURL) {
-                tweetProfileImageView?.image = UIImage(data: imageData)
+            DispatchQueue.global(qos: .userInitiated).async{ [weak self] in
+                if let imageData = try? Data(contentsOf: profileImageURL) {
+                    DispatchQueue.main.async{
+                        self?.tweetProfileImageView?.image = UIImage(data: imageData)
+                    }
+                }
             }
         } else {
             tweetProfileImageView?.image = nil
