@@ -40,13 +40,25 @@ class HistoryTableTableViewController: UITableViewController {
     }
     // sets search text before seguing to Tweet Table View Controller if user clicks on recent search item
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if let tvController = segue.destination as? TweetTableViewController {
-            if let cell = sender as? UITableViewCell {
-                tvController.searchText = cell.textLabel?.text
+        if segue.identifier == "Search History"{
+            if let tvController = segue.destination as? TweetTableViewController {
+                
+                if let cell = sender as? UITableViewCell {
+                    tvController.searchText = cell.textLabel?.text
+                }
+            }
+        }
+        if segue.identifier == "Popular Mentions"{
+            if let popularController = segue.destination as? SmashTweetersTableViewController {
+                if let cell = sender as? UITableViewCell {
+                    popularController.mention = cell.textLabel?.text
+                    
+                    
+                }
             }
         }
         
     }
+        
     
 }

@@ -24,7 +24,7 @@ class MentionsTableViewController: UITableViewController {
     }
     
     //whenever tweet is set, we append the images, urls, users, and hashtags to the mentions array
-    var tweet: Tweet? {
+    var tweet: Twitter.Tweet? {
         didSet {
             if let media = tweet?.media, media.count > 0 {
                 let imageTuple = (title: "Images",
